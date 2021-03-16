@@ -1,0 +1,8 @@
+.wrapper {
+  font-family: 'Helvetica Neue', 'Roboto', sans-serif;
+  color: #2a2a2a;
+  font-size: 16px;
+  max-width: 1140px;
+  margin: 1em auto;
+  padding: 0 1em;
+}
