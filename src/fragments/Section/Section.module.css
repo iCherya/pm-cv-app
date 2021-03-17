@@ -1,0 +1,51 @@
+.wrapper {
+  margin: 2em 0 1em;
+}
+
+.heading {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.heading:after {
+  content: '';
+  flex: 1;
+  background-color: lightgray;
+  height: 1px;
+}
+
+.item {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+.item:last-of-type {
+  margin-bottom: 0;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+  gap: 5px;
+}
+
+.line {
+  flex: 1;
+  background-color: lightgrey;
+  width: 1px;
+  margin: 0 auto;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.about {
+  font-style: italic;
+}

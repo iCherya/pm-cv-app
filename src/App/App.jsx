@@ -2,22 +2,21 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import styles from './App.module.css';
-import PhotoAlbum from '../components/PhotoAlbum/PhotoAlbum';
-import PhotoItem from '../components/PhotoItem/PhotoItem';
+import CV from '../components/CV/CV';
 import NotFound from '../components/NotFound/NotFound';
 
 const App = () => (
   <BrowserRouter>
     <div className={styles.wrapper}>
       <Switch>
-        <Route path="/album/:id">
+        {/* <Route path="/album/:id">
           <PhotoAlbum />
         </Route>
         <Route path="/photo/:id">
           <PhotoItem />
-        </Route>
+        </Route> */}
         <Route exact path="/">
-          <PhotoAlbum />
+          <CV />
         </Route>
         <Route path="/">
           <NotFound />
