@@ -2,21 +2,28 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import styles from './App.module.css';
-import CV from '../components/CV/CV';
-import NotFound from '../components/NotFound/NotFound';
+
+import Personal from '../pages/Personal/Personal';
+import Education from '../pages/Education/Education';
+import Experience from '../pages/Experience/Experience';
+import CV from '../pages/CV/CV';
+import NotFound from '../pages/NotFound/NotFound';
 
 const App = () => (
   <BrowserRouter>
     <div className={styles.wrapper}>
       <Switch>
-        {/* <Route path="/album/:id">
-          <PhotoAlbum />
+        <Route path="/education">
+          <Education />
         </Route>
-        <Route path="/photo/:id">
-          <PhotoItem />
-        </Route> */}
-        <Route exact path="/">
+        <Route path="/experience">
+          <Experience />
+        </Route>
+        <Route path="/cv">
           <CV />
+        </Route>
+        <Route exact path="/">
+          <Personal />
         </Route>
         <Route path="/">
           <NotFound />

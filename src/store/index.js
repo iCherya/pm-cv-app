@@ -1,13 +1,13 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import photosListReducer from '../ducks/photosList';
-import photoSingleReducer from '../ducks/photoSingle';
-import albumInfoReducer from '../ducks/albumInfo';
+import personalReducer from '../ducks/personal';
+import educationReducer from '../ducks/education';
+import experienceReducer from '../ducks/experience';
 
 const rootReducer = combineReducers({
-  photosList: photosListReducer,
-  photoSingle: photoSingleReducer,
-  albumInfo: albumInfoReducer
+  personal: personalReducer,
+  education: educationReducer,
+  experience: experienceReducer
 });
 
 const composeEnhancers =

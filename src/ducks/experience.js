@@ -26,12 +26,9 @@ export const loadPhoto = (photoId) => (dispatch) => {
     });
 };
 
-const initialState = {
-  isLoading: true,
-  data: []
-};
+const initialState = [];
 
-const photoSingleReducer = (state = initialState, action) => {
+const experienceReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUESTED:
       return state;
@@ -45,4 +42,4 @@ const photoSingleReducer = (state = initialState, action) => {
   }
 };
 
-export default photoSingleReducer;
+export default experienceReducer;

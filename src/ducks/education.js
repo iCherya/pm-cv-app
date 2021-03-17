@@ -26,12 +26,9 @@ export const loadAlbum = (albumId) => (dispatch) => {
     });
 };
 
-const initialState = {
-  isLoading: true,
-  data: []
-};
+const initialState = [];
 
-const albumInfoReducer = (state = initialState, action) => {
+const educationReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUESTED:
       return state;
@@ -45,4 +42,4 @@ const albumInfoReducer = (state = initialState, action) => {
   }
 };
 
-export default albumInfoReducer;
+export default educationReducer;
