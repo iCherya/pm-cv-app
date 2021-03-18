@@ -1,0 +1,36 @@
+.heading {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.jobTitle {
+  margin: 1em 0;
+  font-style: italic;
+  max-width: 50%;
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contacts li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 1em;
+}
+
+.contacts li:before {
+  font-size: 1.5em;
+  color: gray;
+}
+
+.phone:before {
+  content: '✆';
+}
+
+.email:before {
+  content: '✉';
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Section.module.css';
+import styles from './PreviousSection.module.css';
 
-const Section = ({ sectionTitle, data }) => {
+const PreviousSection = ({ sectionTitle, data }) => {
   const getHumanDateFormat = (dateObj) => {
     const month = [
       'January',
@@ -55,7 +55,7 @@ const Section = ({ sectionTitle, data }) => {
   );
 };
 
-Section.propTypes = {
+PreviousSection.propTypes = {
   sectionTitle: PropTypes.string.isRequired,
   data: PropTypes.arrayOf(
     PropTypes.shape({
@@ -68,4 +68,4 @@ Section.propTypes = {
   ).isRequired
 };
 
-export default Section;
+export default PreviousSection;
