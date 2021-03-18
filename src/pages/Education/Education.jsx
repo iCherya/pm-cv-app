@@ -1,13 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 import styles from '../../App/Forms.module.css';
 import { saveData } from '../../ducks/education';
+import Button from '../../fragments/Button/Button';
 
 const Education = () => {
   const history = useHistory();
@@ -15,7 +17,7 @@ const Education = () => {
   const education = useSelector((state) => state.education);
 
   const moveBackHandler = () => {
-    history.goBack();
+    history.replace('/');
   };
 
   const addAnotherFormHandler = () => {
@@ -95,12 +97,8 @@ const Education = () => {
             </div>
 
             <div className={styles.buttons}>
-              <button onClick={moveBackHandler} type="button">
-                Back
-              </button>
-              <button onClick={addAnotherFormHandler} type="button">
-                Add more education
-              </button>
+              <Button onClick={moveBackHandler} text="Back" />
+              <Button onClick={addAnotherFormHandler} text="Add more" />
               <button disabled={!isValid} type="submit">
                 Next
               </button>

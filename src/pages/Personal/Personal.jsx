@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useHistory } from 'react-router-dom';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import styles from '../../App/Forms.module.css';
