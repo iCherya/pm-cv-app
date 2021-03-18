@@ -1,0 +1,46 @@
+.wrapper {
+  text-align: center;
+}
+
+.form {
+  width: 500px;
+  margin: 2em auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1em;
+  box-sizing: border-box;
+  box-shadow: 0 3.4px 2.7px rgba(0, 0, 0, 0.034),
+    0 8.7px 6.9px rgba(0, 0, 0, 0.049), 0 17.7px 14.2px rgba(0, 0, 0, 0.061),
+    0 36.5px 29.2px rgba(0, 0, 0, 0.076), 0 100px 80px rgba(0, 0, 0, 0.11);
+}
+
+.form > label {
+  margin: 1em 0 0.2em;
+  display: block;
+  width: 100%;
+}
+
+.form > input {
+  padding: 0.4em 0.8em;
+  width: 100%;
+  font-size: inherit;
+  font-family: inherit;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.form > span {
+  color: tomato;
+}
+
+.form > .buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1em;
+}
+
+.form > .dates {
+  display: flex;
+  margin-top: 1em;
+}

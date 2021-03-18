@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import styles from '../../App/Forms.module.css';
+import styles from '../../forms/Forms.module.css';
 import { saveData } from '../../ducks/experience';
 import Button from '../../fragments/Button/Button';
 

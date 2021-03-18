@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import styles from '../../App/Forms.module.css';
+import styles from '../../forms/Forms.module.css';
 import { saveData } from '../../ducks/education';
 import Button from '../../fragments/Button/Button';
 
@@ -57,7 +57,7 @@ const Education = () => {
         }}
       >
         {({ isValid, values, setValues }) => (
-          <Form className={styles.form}>
+          <Form className={styles.form} id="education">
             <label htmlFor="title">Educational institution</label>
             <Field name="title" type="text" id="title" />
             <span>
@@ -99,7 +99,7 @@ const Education = () => {
             <div className={styles.buttons}>
               <Button onClick={moveBackHandler} text="Back" />
               <Button onClick={addAnotherFormHandler} text="Add more" />
-              <button disabled={!isValid} type="submit">
+              <button form="education" disabled={!isValid} type="submit">
                 Next
               </button>
             </div>
