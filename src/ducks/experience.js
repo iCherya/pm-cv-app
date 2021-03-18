@@ -1,42 +1,21 @@
-const REQUESTED = 'redux/photo_single/requested';
-const RECEIVED = 'redux/photo_single/received';
+const SAVE = 'redux/experience/saveData';
 
-const requested = () => ({
-  type: REQUESTED
+const save = (data) => ({
+  type: SAVE,
+  payload: data
 });
 
-const received = (data) => ({
-  type: RECEIVED,
-  payload: {
-    data
-  }
-});
-
-export const loadPhoto = (photoId) => (dispatch) => {
-  dispatch(requested());
-
-  fetch(`https://jsonplaceholder.typicode.com/photos/${photoId}?_expand=album`)
-    .then((response) => response.json())
-    .then((data) => {
-      const { url: photoUrl, title: photoTitle, album } = data;
-      const { id: albumId, title: albumTitle } = album;
-      const usefulData = { photoUrl, photoTitle, albumId, albumTitle };
-
-      dispatch(received(usefulData));
-    });
+export const saveData = (data) => (dispatch) => {
+  dispatch(save(data));
 };
 
 const initialState = [];
 
 const experienceReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REQUESTED:
-      return state;
-    case RECEIVED:
-      return {
-        isLoading: false,
-        data: action.payload.data
-      };
+    case SAVE:
+      console.log(action.payload);
+      return [...state, action.payload];
     default:
       return state;
   }

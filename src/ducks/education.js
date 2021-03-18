@@ -1,42 +1,21 @@
-const REQUESTED = 'redux/album_info/requested';
-const RECEIVED = 'redux/album_info/received';
+const SAVE = 'redux/education/saveData';
 
-const requested = () => ({
-  type: REQUESTED
+const save = (data) => ({
+  type: SAVE,
+  payload: data
 });
 
-const received = (data) => ({
-  type: RECEIVED,
-  payload: {
-    data
-  }
-});
-
-export const loadAlbum = (albumId) => (dispatch) => {
-  dispatch(requested());
-
-  fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}?_expand=user`)
-    .then((response) => response.json())
-    .then((data) => {
-      const { title: albumTitle, user } = data;
-      const { name: userName, email: userEmail } = user;
-      const usefulData = { albumTitle, userName, userEmail };
-
-      dispatch(received(usefulData));
-    });
+export const saveData = (data) => (dispatch) => {
+  dispatch(save(data));
 };
 
 const initialState = [];
 
 const educationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REQUESTED:
-      return state;
-    case RECEIVED:
-      return {
-        isLoading: false,
-        data: action.payload.data
-      };
+    case SAVE:
+      console.log(action.payload);
+      return [...state, action.payload];
     default:
       return state;
   }

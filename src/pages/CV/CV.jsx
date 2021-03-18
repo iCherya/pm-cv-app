@@ -1,61 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import styles from './CV.module.css';
+import forms from '../../App/Forms.module.css';
 import Section from '../../fragments/Section/Section';
 
 const CV = () => {
-  const _props = {
-    personal: {
-      firstName: 'Vladyslav',
-      lastName: 'Cherednichenko',
-      jobTitle: 'Lorem ipsum dolor ',
-      phone: '+380638744478',
-      email: 'chrednichenko.vlad@gmail.com'
-    },
-    education: [
-      {
-        id: 1,
-        title: 'Lorem',
-        specialization:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        startDate: '02.2020',
-        endDate: '03.2017'
-      },
-      {
-        id: 2,
-        title: 'Lorem',
-        specialization:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        startDate: '02.2020',
-        endDate: '03.2017'
-      }
-    ],
-    experience: [
-      {
-        id: 1,
-        title: 'Lorem 1',
-        specialization: 'specialization Lorem 1',
-        startDate: '01.02.2020',
-        endDate: '22.03.2017'
-      },
-      {
-        id: 2,
-        title: 'Lorem 2',
-        specialization: 'specialization Lorem 2',
-        startDate: '01.02.2020',
-        endDate: '22.03.2017'
-      },
-      {
-        id: 3,
-        title: 'Lorem 3',
-        specialization: 'specialization Lorem 3',
-        startDate: '01.02.2020',
-        endDate: '22.03.2017'
-      }
-    ]
-  };
+  const personal = useSelector((state) => state.personal);
+  const education = useSelector((state) => state.education);
+  const experience = useSelector((state) => state.experience);
 
-  const { personal, education, experience } = _props;
+  console.log(personal, education, experience);
   const { firstName, lastName, jobTitle, phone, email } = personal;
 
   return (
@@ -71,6 +26,11 @@ const CV = () => {
 
       <Section sectionTitle="Education" data={education} />
       <Section sectionTitle="Experience" data={experience} />
+      <div className={forms.buttons}>
+        <button className={forms.button} type="button">
+          Back
+        </button>
+      </div>
     </div>
   );
 };

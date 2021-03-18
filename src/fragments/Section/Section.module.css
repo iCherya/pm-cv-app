@@ -22,15 +22,11 @@
   gap: 30px;
 }
 
-.item:last-of-type {
-  margin-bottom: 0;
-}
-
 .date {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-width: 100px;
+  align-items: flex-end;
+  min-width: 120px;
   gap: 5px;
 }
 

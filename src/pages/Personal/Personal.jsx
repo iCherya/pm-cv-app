@@ -20,9 +20,11 @@ const Personal = () => {
         initialValues={personal}
         validationSchema={Yup.object({
           firstName: Yup.string()
+            .min(2, 'Must be 2 characters or more')
             .max(15, 'Must be 15 characters or less')
             .required('Required'),
           lastName: Yup.string()
+            .min(2, 'Must be 2 characters or more')
             .max(20, 'Must be 20 characters or less')
             .required('Required'),
           jobTitle: Yup.string()
@@ -31,10 +33,14 @@ const Personal = () => {
           email: Yup.string()
             .email('Invalid email address')
             .required('Required'),
-          phone: Yup.string().required('Required')
+          phone: Yup.string()
+            .matches(
+              /^380(67|68|96|97|98|50|66|95|99|63|73|93)\d{7}$/gi,
+              'Enter correct phone with format: 380633456789'
+            )
+            .required('Required')
         })}
         onSubmit={(values) => {
-          console.log(values);
           dispatch(saveData(values));
           history.push('/education');
         }}
@@ -70,10 +76,11 @@ const Personal = () => {
             <span>
               <ErrorMessage name="phone" />
             </span>
-
-            <button disabled={!isValid} type="submit">
-              Next
-            </button>
+            <div className={styles.buttons}>
+              <button disabled={!isValid} type="submit">
+                Next
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
