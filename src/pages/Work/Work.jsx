@@ -8,30 +8,30 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import styles from '../../forms/Forms.module.css';
-import { saveData } from '../../ducks/experience';
+import { saveData } from '../../ducks/work';
 import Button from '../../fragments/Button/Button';
 
-const Experience = () => {
+const Work = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const experience = useSelector((state) => state.experience);
+  const data = useSelector((state) => state.work);
 
   const moveBackHandler = () => {
     history.replace('/education');
   };
 
   const addAnotherFormHandler = () => {
-    console.log('AnotherForm');
+    // console.log('AnotherForm');
   };
 
   return (
     <div className={styles.wrapper}>
-      <h1>Step 3/3: Experience information</h1>
+      <h1>Step 3/3: Work information</h1>
 
       <Formik
         initialValues={
-          experience.length > 0
-            ? experience[0]
+          data.length > 0
+            ? data[0]
             : {
                 title: '',
                 specialization: '',
@@ -108,4 +108,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default Work;

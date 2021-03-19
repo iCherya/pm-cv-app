@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import styles from './CV.module.css';
-import PersonalSection from '../../fragments/PersonalSection/PersonalSection';
-import PreviousSection from '../../fragments/PreviousSection/PreviousSection';
+import PersonalPresenter from '../../fragments/PersonalPresenter/PersonalPresenter';
+import ExperiencePresenter from '../../fragments/ExperiencePresenter/ExperiencePresenter';
 import Button from '../../fragments/Button/Button';
 
 const CV = () => {
   const history = useHistory();
-  const { personal, education, experience } = useSelector((state) => state);
+  const { personal, education, work } = useSelector((state) => state);
 
   const moveBackHandler = () => {
     history.replace('/experience');
@@ -17,9 +17,9 @@ const CV = () => {
 
   return (
     <div className={styles.wrapper}>
-      <PersonalSection data={personal} />
-      <PreviousSection sectionTitle="Education" data={education} />
-      <PreviousSection sectionTitle="Experience" data={experience} />
+      <PersonalPresenter data={personal} />
+      <ExperiencePresenter sectionTitle="Education" data={education} />
+      <ExperiencePresenter sectionTitle="Work" data={work} />
       <Button text="Back" onClick={moveBackHandler} />
     </div>
   );

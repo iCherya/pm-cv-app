@@ -20,7 +20,6 @@ const initialState = {
 const personalReducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE:
-      console.log(action.payload);
       return { ...state, ...action.payload };
     default:
       return state;

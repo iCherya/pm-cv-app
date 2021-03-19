@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
 
 import DatePicker from 'react-datepicker';
@@ -14,14 +14,15 @@ import Button from '../../fragments/Button/Button';
 const Education = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const education = useSelector((state) => state.education);
+  const data = useSelector((state) => state.education);
+  console.log(data);
 
   const moveBackHandler = () => {
     history.replace('/');
   };
 
-  const addAnotherFormHandler = () => {
-    console.log('AnotherForm');
+  const submitHandler = (values) => {
+    dispatch(saveData(values.data));
   };
 
   return (
@@ -29,83 +30,124 @@ const Education = () => {
       <h1>Step 2/3: Education information</h1>
 
       <Formik
-        initialValues={
-          education.length > 0
-            ? education[0]
-            : {
-                title: '',
-                specialization: '',
-                startDate: null,
-                endDate: null
-              }
-        }
-        validationSchema={Yup.object({
-          title: Yup.string()
-            .min(2, 'Must be 30 characters or more')
-            .max(30, 'Must be 30 characters or less')
-            .required('Required'),
-          specialization: Yup.string()
-            .min(2, 'Must be 30 characters or more')
-            .max(30, 'Must be 30 characters or less')
-            .required('Required'),
-          startDate: Yup.string().required(),
-          endDate: Yup.string().required()
+        initialValues={{ data }}
+        validationSchema={Yup.object().shape({
+          data: Yup.array().of(
+            Yup.object().shape({
+              title: Yup.string()
+                .min(2, 'Must be 30 characters or more')
+                .max(30, 'Must be 30 characters or less')
+                .required('Required'),
+              specialization: Yup.string()
+                .min(2, 'Must be 30 characters or more')
+                .max(30, 'Must be 30 characters or less')
+                .required('Required'),
+              startDate: Yup.string().required(),
+              endDate: Yup.string().required()
+            })
+          )
         })}
-        onSubmit={(values) => {
-          dispatch(saveData(values));
-          history.push('/experience');
-        }}
+        onSubmit={submitHandler}
       >
-        {({ isValid, values, setValues }) => (
-          <Form className={styles.form} id="education">
-            <label htmlFor="title">Educational institution</label>
-            <Field name="title" type="text" id="title" />
-            <span>
-              <ErrorMessage name="title" />
-            </span>
+        {({ initialValues, isValid, errors, values, setValues }) => {
+          console.log('asdasd', {
+            initialValues,
+            isValid,
+            errors,
+            values,
+            setValues
+          });
 
-            <label htmlFor="specialization">Specialization</label>
-            <Field name="specialization" type="text" id="specialization" />
-            <span>
-              <ErrorMessage name="specialization" />
-            </span>
+          return (
+            <Form className={styles.form}>
+              <FieldArray name="education">
+                {() =>
+                  values.data.map((_, i) => (
+                    <React.Fragment key={i}>
+                      <label>Educational institution</label>
+                      <Field type="text" name={`data.${i}.title`} />
+                      <ErrorMessage name={`data.${i}.title`} component="span" />
 
-            <div className={styles.dates}>
-              <label htmlFor="startDate">Start date</label>
-              <DatePicker
-                className={styles.block}
-                id="startDate"
-                name="startDate"
-                selected={values.startDate}
-                onChange={(date) => setValues({ ...values, startDate: date })}
-                dateFormat="MM/yyyy"
-                showMonthYearPicker
-                showFullMonthYearPicker
+                      <label>Specialization</label>
+                      <Field type="text" name={`data.${i}.specialization`} />
+                      <ErrorMessage
+                        name={`data.${i}.specialization`}
+                        component="span"
+                      />
+
+                      <div className={styles.dates}>
+                        <label>Start date</label>
+                        <DatePicker
+                          name={`data.${i}.startDate`}
+                          selected={values.data[i].startDate}
+                          onChange={(date) => {
+                            setValues((values) => {
+                              const obj = { ...values };
+                              obj.data[i].startDate = date;
+
+                              return obj;
+                            });
+                          }}
+                          dateFormat="MM/yyyy"
+                          showMonthYearPicker
+                          showFullMonthYearPicker
+                        />
+                        <ErrorMessage
+                          name={`data.${i}.startDate`}
+                          component="span"
+                        />
+
+                        <label>End date</label>
+                        <DatePicker
+                          name={`data.${i}.endDate`}
+                          selected={values.data[i].endDate}
+                          onChange={(date) => {
+                            setValues((values) => {
+                              const obj = { ...values };
+                              obj.data[i].endDate = date;
+
+                              return obj;
+                            });
+                          }}
+                          dateFormat="MM/yyyy"
+                          showMonthYearPicker
+                          showFullMonth
+                        />
+                        <ErrorMessage
+                          name={`data.${i}.endDate`}
+                          component="span"
+                        />
+                      </div>
+                    </React.Fragment>
+                  ))
+                }
+              </FieldArray>
+              <Button
+                onClick={() => {
+                  const { data } = values;
+
+                  const newData = [
+                    ...data,
+                    {
+                      title: '',
+                      specialization: '',
+                      startDate: null,
+                      endDate: null
+                    }
+                  ];
+
+                  setValues({ ...values, data: newData });
+                }}
+                text="Add more"
               />
-
-              <label htmlFor="endDate">End date</label>
-              <DatePicker
-                id="endDate"
-                name="endDate"
-                selected={values.endDate}
-                onChange={(date) => setValues({ ...values, endDate: date })}
-                dateFormat="MM/yyyy"
-                showMonthYearPicker
-                showFullMonth
-                YearPicker
-              />
-            </div>
-
-            <div className={styles.buttons}>
-              <Button onClick={moveBackHandler} text="Back" />
-              <Button onClick={addAnotherFormHandler} text="Add more" />
-              <button form="education" disabled={!isValid} type="submit">
-                Next
-              </button>
-            </div>
-          </Form>
-        )}
+              <button type="submit">Next</button>
+            </Form>
+          );
+        }}
       </Formik>
+
+      {/* <Button onClick={moveBackHandler} text="Back" /> */}
+      {/* <Button onClick={addAnotherFormHandler} text="Add more" /> */}
     </div>
   );
 };

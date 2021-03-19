@@ -5,7 +5,7 @@ import styles from './App.module.css';
 
 import Personal from '../pages/Personal/Personal';
 import Education from '../pages/Education/Education';
-import Experience from '../pages/Experience/Experience';
+import Work from '../pages/Work/Work';
 import CV from '../pages/CV/CV';
 import NotFound from '../pages/NotFound/NotFound';
 
@@ -16,8 +16,8 @@ const App = () => (
         <Route path="/education">
           <Education />
         </Route>
-        <Route path="/experience">
-          <Experience />
+        <Route path="/work">
+          <Work />
         </Route>
         <Route path="/cv">
           <CV />

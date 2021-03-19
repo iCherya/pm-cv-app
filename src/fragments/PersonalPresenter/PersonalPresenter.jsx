@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './PersonalSection.module.css';
+import styles from './PersonalPresenter.module.css';
 
-const PersonalSection = ({ data }) => {
+const PersonalPresenter = ({ data }) => {
   const { firstName, lastName, jobTitle, phone, email } = data;
 
   return (
@@ -18,8 +18,8 @@ const PersonalSection = ({ data }) => {
   );
 };
 
-PersonalSection.propTypes = {
+PersonalPresenter.propTypes = {
   data: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-export default PersonalSection;
+export default PersonalPresenter;

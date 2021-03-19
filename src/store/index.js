@@ -2,12 +2,12 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import personalReducer from '../ducks/personal';
 import educationReducer from '../ducks/education';
-import experienceReducer from '../ducks/experience';
+import workReducer from '../ducks/work';
 
 const rootReducer = combineReducers({
   personal: personalReducer,
   education: educationReducer,
-  experience: experienceReducer
+  work: workReducer
 });
 
 const composeEnhancers =

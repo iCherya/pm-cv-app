@@ -1,4 +1,4 @@
-const SAVE = 'redux/education/saveData';
+const SAVE = 'redux/work/saveData';
 
 const save = (data) => ({
   type: SAVE,
@@ -18,7 +18,7 @@ const initialState = [
   }
 ];
 
-const educationReducer = (state = initialState, action) => {
+const workReducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE:
       return [...action.payload];
@@ -27,4 +27,4 @@ const educationReducer = (state = initialState, action) => {
   }
 };
 
-export default educationReducer;
+export default workReducer;
