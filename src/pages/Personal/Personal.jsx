@@ -9,10 +9,10 @@ import { saveData } from '../../ducks/personal';
 const Personal = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const personal = useSelector((state) => state.personal);
+  const personal = useSelector((state) => state.personal.data);
 
   const onSubmitHandler = (values) => {
-    dispatch(saveData(values));
+    dispatch(saveData({ values }));
     history.push('/education');
   };
 

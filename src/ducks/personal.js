@@ -10,17 +10,20 @@ export const saveData = (data) => (dispatch) => {
 };
 
 const initialState = {
-  firstName: '',
-  lastName: '',
-  jobTitle: '',
-  phone: '',
-  email: ''
+  data: {
+    firstName: '',
+    lastName: '',
+    jobTitle: '',
+    phone: '',
+    email: ''
+  },
+  isFilled: false
 };
 
 const personalReducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE:
-      return { ...state, ...action.payload };
+      return { data: { ...action.payload.values }, isFilled: true };
     default:
       return state;
   }

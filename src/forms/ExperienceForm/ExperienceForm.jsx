@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
-
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -30,8 +29,12 @@ const ExperienceForm = ({
             .min(2, 'Must be 30 characters or more')
             .max(30, 'Must be 30 characters or less')
             .required('Required'),
-          startDate: Yup.string().required('Required'),
-          endDate: Yup.string().required('Required')
+          startDate: Yup.string()
+            .transform((v) => (v === null ? '' : v))
+            .required('Required'),
+          endDate: Yup.string()
+            .transform((v) => (v === null ? '' : v))
+            .required('Required')
         })
       )
     })}
@@ -159,7 +162,7 @@ const ExperienceForm = ({
 );
 
 ExperienceForm.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   labels: PropTypes.objectOf(PropTypes.string).isRequired,
   submitHandler: PropTypes.func.isRequired,
   moveBackHandler: PropTypes.func.isRequired,

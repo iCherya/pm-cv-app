@@ -37,19 +37,23 @@ const ExperiencePresenter = ({ sectionTitle, data }) => {
       <ul className={styles.list}>
         {data
           .sort((a, b) => b.endDate - a.endDate)
-          .map(({ title, specialization, startDate, endDate }) => (
-            <li key={performance.now()} className={styles.item}>
-              <div className={styles.date}>
-                <div>{getHumanDateFormat(endDate)}</div>
-                <div className={styles.line} />
-                <div>{getHumanDateFormat(startDate)}</div>
-              </div>
-              <div>
-                <div className={styles.title}>{title}</div>
-                <div className={styles.about}>{specialization}</div>
-              </div>
-            </li>
-          ))}
+          .map(
+            ({ title, specialization, startDate, endDate }) =>
+              startDate &&
+              endDate && (
+                <li key={performance.now()} className={styles.item}>
+                  <div className={styles.date}>
+                    <div>{getHumanDateFormat(endDate)}</div>
+                    <div className={styles.line} />
+                    <div>{getHumanDateFormat(startDate)}</div>
+                  </div>
+                  <div>
+                    <div className={styles.title}>{title}</div>
+                    <div className={styles.about}>{specialization}</div>
+                  </div>
+                </li>
+              )
+          )}
       </ul>
     </div>
   );
