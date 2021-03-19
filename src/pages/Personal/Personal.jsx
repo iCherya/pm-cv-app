@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import PersonalForm from '../../forms/PersonalForm/PersonalForm';
 
+import PersonalForm from '../../forms/PersonalForm/PersonalForm';
 import styles from '../../forms/Forms.module.css';
 import { saveData } from '../../ducks/personal';
 

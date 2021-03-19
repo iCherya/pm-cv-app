@@ -68,7 +68,7 @@ const PersonalForm = ({ initialValues, onSubmit }) => (
           disabled={!isValid}
           type="submit"
         >
-          Next
+          Continue
         </button>
       </Form>
     )}

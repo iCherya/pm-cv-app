@@ -20,7 +20,7 @@
   width: 100%;
 }
 
-.form > input {
+.form input {
   padding: 0.4em 0.8em;
   width: 100%;
   font-size: inherit;
@@ -30,7 +30,7 @@
   border: 1px solid gray;
 }
 
-.form > span {
+.form span {
   color: tomato;
 }
 
@@ -42,5 +42,14 @@
 
 .form > .dates {
   display: flex;
+  align-items: center;
   margin-top: 1em;
+  padding-bottom: 2em;
+  border-bottom: 2px dashed lightgray;
+}
+
+.form > .dates label {
+  display: block;
+  flex: 1;
+  margin: 0 1em;
 }

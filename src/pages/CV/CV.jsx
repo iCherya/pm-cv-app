@@ -9,11 +9,17 @@ import Button from '../../fragments/Button/Button';
 
 const CV = () => {
   const history = useHistory();
-  const { personal, education, work } = useSelector((state) => state);
+  const { personal, education, work, stage } = useSelector((state) => state);
+  const { isWorkFilled } = stage;
 
   const moveBackHandler = () => {
-    history.replace('/experience');
+    history.replace('/work');
   };
+
+  if (!isWorkFilled) {
+    moveBackHandler();
+    return '';
+  }
 
   return (
     <div className={styles.wrapper}>
